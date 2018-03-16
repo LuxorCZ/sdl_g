@@ -1,0 +1,50 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "intelliSenseMode": "clang-x64",
+            "includePath": [
+                "${workspaceRoot}",
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
+                "C:/MinGW/include",
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/backward",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../include",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include-fixed",
+                "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/include",
+                "${workspaceRoot}/lib/include/*",
+                "${workspaceRoot}/lib/SDL/include/SDL2",
+                "${workspaceRoot}/lib/SDL_Image/include/SDL2",
+                "${workspaceRoot}/code/engine"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "__GNUC__=6",
+                "__cdecl=__attribute__((__cdecl__))"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceRoot}",
+                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
+                    "C:/MinGW/include",
+                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/backward",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../include",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/include-fixed",
+                    "d:/programs/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/include",
+                    "${workspaceRoot}/lib/SDL/*"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 3
+}
