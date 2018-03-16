@@ -16,7 +16,7 @@ namespace Game.Engine.Entities
         private int height;
         public int Height { get { return this.height; } }
 
-        private byte[] bytes;
+        private UInt32[] bytes;
 
         private IntPtr sdlSurface;
 
@@ -39,7 +39,7 @@ namespace Game.Engine.Entities
         /// <param name="bytes"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public Sprite(byte[] bytes, int width, int height)
+        public Sprite(UInt32[] bytes, int width, int height)
         {
             this.width = width; this.height = height;
             this.bytes = bytes;

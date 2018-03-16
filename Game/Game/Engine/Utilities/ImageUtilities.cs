@@ -27,9 +27,10 @@ namespace Game.Engine.Utilities
 
             Image im = Image.FromFile(path);
 
-            using (MemoryStream ms = new MemoryStream())
-            {
+            List<UInt32> ms = new List<UInt32>();
 
+            /*using (List<int> ms = new List<int>())
+            {*/
                 using (Bitmap b = new Bitmap(im))
                 {
 
@@ -39,18 +40,15 @@ namespace Game.Engine.Utilities
                         {
                             System.Drawing.Color c = b.GetPixel(x, y);
 
-                            ms.WriteByte(c.A);
-                            ms.WriteByte(c.R);
-                            ms.WriteByte(c.G);
-                            ms.WriteByte(c.B);
+                            ms.Add((UInt32)(((c.R << 8 | c.G) << 8 | c.B) << 8 | c.A));
                         }
                     }
 
-                }
+                //}
 
                 //im.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                byte[] bytes = ms.ToArray();
-                return new Sprite(bytes, im.Width, im.Height);
+                UInt32[] integers = ms.ToArray();
+                return new Sprite(integers, im.Width, im.Height);
 
             }
         }
