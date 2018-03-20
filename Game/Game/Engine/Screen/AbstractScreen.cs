@@ -5,6 +5,8 @@ using System.Text;
 using SDL2;
 using Game.Engine.Utilities;
 using Game.Engine.Entities;
+using Game.Engine.Managers;
+using Game.Engine.Utilities.Math;
 
 namespace Game.Engine.Screen
 {
@@ -15,8 +17,11 @@ namespace Game.Engine.Screen
         public static IntPtr screenRenderer;
         protected static IntPtr screenSurface;
 
-        protected int width = 800;
-        protected int height = 600;
+        protected int width = 1024;
+        protected int height = 768;
+
+        public int Width { get { return width; } }
+        public int Height { get { return height; } }
 
         protected bool doRun = true;
 
@@ -24,8 +29,10 @@ namespace Game.Engine.Screen
         protected int deltaMs = 0;
 
         public abstract void drawSprites(Tile[,] tiles);
+        public abstract void drawSprite(Sprite s, Vector2 position);
+        public abstract void drawEntities(List<Entity> entities);
 
-        public void init()
+        public void init(EventManager eventManager)
         {
             window = SDL.SDL_CreateWindow("test", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED, width, height, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
 
@@ -50,6 +57,13 @@ namespace Game.Engine.Screen
 
             deltaMs = 1000 / refreshRate;
 
+            eventManager.SDL_Quit += OnQuit;
+
+        }
+
+        public void OnQuit(object sender, EventArgs e)
+        {
+            doRun = false;
         }
 
         public void setBackColour(Color color)
@@ -57,7 +71,9 @@ namespace Game.Engine.Screen
             SDL.SDL_SetRenderDrawColor(screenSurface, color.R, color.G, color.B, color.Alpha);
         }
 
-        public void handleEvents()
+        
+
+        /*public void handleEvents()
         {
             SDL.SDL_Event e;
             if(SDL.SDL_WaitEvent(out e) > 0)
@@ -65,18 +81,18 @@ namespace Game.Engine.Screen
                 switch (e.type)
                 {
                     case SDL.SDL_EventType.SDL_QUIT:
-                        {
-                            doRun = false;
-                            break;
-                        }
+                    {
+                        doRun = false;
+                        break;
+                    }
                     default:
-                        {
-                            SDL.SDL_Delay(0);
-                            break;
-                        }
+                    {
+                        SDL.SDL_Delay(0);
+                        break;
+                    }
                 }
             }
-        }
+        }*/
 
         public bool doClose()
         {

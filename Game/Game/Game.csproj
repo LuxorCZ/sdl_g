@@ -47,11 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Entities\Multisprite.cs" />
+    <Compile Include="Engine\Entities\Player.cs" />
     <Compile Include="Engine\Entities\Sprite.cs" />
     <Compile Include="Engine\Entities\Entity.cs" />
     <Compile Include="Engine\Entities\Tile.cs" />
+    <Compile Include="Engine\Events\KeyEventArgs.cs" />
     <Compile Include="Engine\GameController.cs" />
     <Compile Include="Engine\Managers\AssetManager.cs" />
+    <Compile Include="Engine\Managers\EventManager.cs" />
+    <Compile Include="Engine\Managers\KeyboardManager.cs" />
     <Compile Include="Engine\Managers\Manager.cs" />
     <Compile Include="Engine\Managers\TileManager.cs" />
     <Compile Include="Engine\Screen\AbstractScreen.cs" />
@@ -59,6 +64,8 @@
     <Compile Include="Engine\Utilities\Color.cs" />
     <Compile Include="Engine\Utilities\DeltaTime.cs" />
     <Compile Include="Engine\Utilities\ImageUtilities.cs" />
+    <Compile Include="Engine\Utilities\Math\Vector.cs" />
+    <Compile Include="Engine\Utilities\Math\Vector2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,7 +73,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Engine\Events\" />
     <Folder Include="Engine\Exceptions\" />
     <Folder Include="Engine\Main\" />
   </ItemGroup>

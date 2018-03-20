@@ -6,6 +6,7 @@ using System.Text;
 using SDL2;
 using Game.Engine.Managers;
 using Game.Engine.Entities;
+using Game.Engine.Utilities.Math;
 
 namespace Game.Engine.Screen
 {
@@ -14,9 +15,9 @@ namespace Game.Engine.Screen
 
         private DeltaTime dt;
 
-        public Screen(DeltaTime dt)
+        public Screen(DeltaTime dt, EventManager em)
         {
-            this.init();
+            this.init(em);
             this.dt = dt;
         }
 
@@ -41,19 +42,19 @@ namespace Game.Engine.Screen
             int y_width = tiles.GetLength(0);
             int x_width = tiles.GetLength(1);
 
-            SDL.SDL_Rect rectSprite = tiles[0,0].Sprite.Rect;
+            //IntPtr texture = SDL.SDL_CreateTextureFromSurface(screenRenderer, tiles[0, 0].Sprite.SDLSurface);
 
-            IntPtr texture = SDL.SDL_CreateTextureFromSurface(screenRenderer, tiles[0,0].Sprite.SDLSurface);
 
             for (int y = 0; y < y_width; y++)
             {
 
                 for(var x = 0; x < x_width; x++)
                 {
-
+                    if (tiles[y, x] == null) continue;
+                    IntPtr texture = tiles[y, x].Sprite.SDLTexture;
                     SDL.SDL_Rect rect;
-                    rect.x = x * 16; rect.y = y * 16; rect.w = tiles[y, x].Sprite.Width; rect.h = tiles[y, x].Sprite.Height;
-
+                    SDL.SDL_Rect rectSprite = tiles[y, x].Sprite.Rect;
+                    rect.x = x * TileManager.TILE_WIDTH; rect.y = y * TileManager.TILE_WIDTH; rect.w = tiles[y, x].Sprite.Width; rect.h = tiles[y, x].Sprite.Height;
                     SDL.SDL_RenderCopy(screenRenderer, texture, ref rectSprite, ref rect);
                 }
 
@@ -61,6 +62,21 @@ namespace Game.Engine.Screen
 
             //SDL2.SDL.SDL_CreateRGBSurfaceFrom()
 
+        }
+
+        public override void drawSprite(Sprite s, Vector2 position)
+        {
+            SDL.SDL_Rect rect;
+            SDL.SDL_Rect rectSprite = s.Rect;
+            rect.x = position.X; rect.y = position.Y; rect.w = s.Width; rect.h = s.Height;
+            SDL.SDL_RenderCopy(screenRenderer, s.SDLTexture, ref rectSprite, ref rect);
+        }
+
+        public override void drawEntities(List<Entity> entities)
+        {
+            foreach(Entity e in entities)
+            {
+            }
         }
 
     }

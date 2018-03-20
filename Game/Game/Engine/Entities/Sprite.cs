@@ -11,24 +11,59 @@ namespace Game.Engine.Entities
     class Sprite : Entity
     {
 
+        /// <summary>
+        /// Sprite height derived from the Image instance. Used for creation of the bounding box.
+        /// </summary>
         private int width;
+
+        /// <summary>
+        /// Gets the sprite's width.
+        /// </summary>
         public int Width { get { return this.width; } }
+
+        /// <summary>
+        /// Sprite width derived from the Image instance. Used for creation of the bounding box.
+        /// </summary>
         private int height;
+
+        /// <summary>
+        /// Gets the sprite's height.
+        /// </summary>
         public int Height { get { return this.height; } }
 
+        /// <summary>
+        /// Contains the SDL surface bytes.
+        /// TODO verify if needed
+        /// </summary>
         private UInt32[] bytes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr sdlSurface;
 
+        /// <summary>
+        /// Gets the SDL surface.
+        /// </summary>
         public IntPtr SDLSurface { get { return this.sdlSurface; } }
 
+        /// <summary>
+        /// SDL texture pointer.
+        /// </summary>
         private IntPtr sdlTexture;
 
+        /// <summary>
+        /// Gets the SDL texture. 
+        /// TODO create at initialisation!!!
+        /// </summary>
         public IntPtr SDLTexture { get {
-                if(sdlTexture == null) sdlTexture = SDL.SDL_CreateTextureFromSurface(AbstractScreen.screenRenderer, sdlSurface);
+                if(sdlTexture == IntPtr.Zero) sdlTexture = SDL.SDL_CreateTextureFromSurface(AbstractScreen.screenRenderer, sdlSurface);
                 return this.sdlTexture;
             } }
 
+        /// <summary>
+        /// Bounding box of the sprite.
+        /// </summary>
         private SDL.SDL_Rect rect;
 
         public SDL.SDL_Rect Rect { get { return this.rect; } }

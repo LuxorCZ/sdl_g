@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Game.Engine.Utilities.Math;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Game.Engine.Entities
 {
-    class Entity
+    abstract class Entity
     {
+
+        protected Vector2 position;
+        protected string name;
+
     }
 }

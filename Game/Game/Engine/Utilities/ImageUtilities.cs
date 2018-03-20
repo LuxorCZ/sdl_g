@@ -29,24 +29,18 @@ namespace Game.Engine.Utilities
 
             List<UInt32> ms = new List<UInt32>();
 
-            /*using (List<int> ms = new List<int>())
-            {*/
-                using (Bitmap b = new Bitmap(im))
-                {
+            using (Bitmap b = new Bitmap(im))
+            {
 
                     for(int y = 0; y < im.Height; y++)
                     {
                         for(int x = 0; x < im.Width; x++)
                         {
                             System.Drawing.Color c = b.GetPixel(x, y);
-
-                            ms.Add((UInt32)(((c.R << 8 | c.G) << 8 | c.B) << 8 | c.A));
+                            ms.Add((UInt32)(c.R << 24 | c.G << 16 | c.B << 8 | c.A));
                         }
                     }
 
-                //}
-
-                //im.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
                 UInt32[] integers = ms.ToArray();
                 return new Sprite(integers, im.Width, im.Height);
 
